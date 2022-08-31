@@ -1,0 +1,18 @@
+.m_t {
+  margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  .w_50 {
+    max-width: 50%;
+  }
+}
+
+.contactList_item {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid gray;
+  justify-content: space-between;
+}

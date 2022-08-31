@@ -2,7 +2,11 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div>Hello World</div>
+    <div className='ui fixed menu'>
+      <div className="ui container center">
+        <h2 className='py-3'>Contact Manager</h2>
+      </div>
+    </div>
   )
 }
 
