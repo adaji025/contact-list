@@ -1,7 +1,10 @@
 .m_t {
-  margin-top: 5rem;
+  margin-top: 5rem !important;
 }
 
+.add-btn {
+  height: 60px !important;
+}
 @media (min-width: 768px) {
   .w_50 {
     max-width: 50%;

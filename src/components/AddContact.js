@@ -18,7 +18,7 @@ class AddContact extends React.Component {
 render() {
   return(
     <div className='ui main w_50 m_t'>
-      <h2>Add Contact</h2>
+      <h2 className='pt-3'>Add Contact</h2>
       <form className='ui form' onSubmit={this.add}>
         <div className="field">
           <label htmlFor="name">Name</label>

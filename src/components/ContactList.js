@@ -1,14 +1,23 @@
 import React from "react";
+import {useNavigate} from 'react-router-dom'
 import user from "../images/avatar.png";
 
 const ContactList = (props) => {
-const deleteContactHandler = ({id}) => {
-  props.getContactId(id)
-}
+  const navigate = useNavigate()
+  const deleteContactHandler = ({ id }) => {
+    props.getContactId(id);
+  };
   return (
-    <div className="ui celled list">
+    <div className="ui celled list m_t">
+      <div className="d-flex pt-3 justify-content-between align-items-center">
+        <h2 className="fw-bold">Contact List</h2>
+        <button className="btn btn-secondary py-3 px-4" onClick={() => navigate('/add-contact')}>Add Contact</button>
+      </div>
       {props.contacts.map((contact, i) => (
-        <div className="d-flex justify-content-between align-items-center border my-3 px-3 py-2 w_50 mx-auto" key={i}>
+        <div
+          className="d-flex justify-content-between align-items-center border my-3 px-3 py-2 w_50 mx-auto"
+          key={i}
+        >
           <div className="fw-semibold d-flex align-items-center">
             <div className="me-1">
               <img src={user} alt="" className="ui avatar image" />
