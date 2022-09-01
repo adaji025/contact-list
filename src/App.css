@@ -5,6 +5,9 @@
 .add-btn {
   height: 60px !important;
 }
+.pointer {
+  cursor: pointer !important;
+}
 @media (min-width: 768px) {
   .w_50 {
     max-width: 50%;
