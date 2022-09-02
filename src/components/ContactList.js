@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import user from "../images/avatar.png";
 
 const ContactList = (props) => {
   const navigate = useNavigate();
+
   const deleteContactHandler = ({ id }) => {
     props.getContactId(id);
   };
+
+  const inputRef = useRef();
+  const getSearchTerm = () => {
+    props.searchHandler(inputRef.current.value)
+  };
+
   return (
     <div className="ui celled list m_t">
       <div className="d-flex pt-3 justify-content-between align-items-center">
@@ -17,6 +24,21 @@ const ContactList = (props) => {
         >
           Add Contact
         </button>
+      </div>
+      <div className="w-100 my-3">
+        <div className="ui search">
+          <div className="ui icon input">
+            <input
+              type="text"
+              placeholder="Search"
+              className="prompt"
+              value={props.term}
+              onChange={getSearchTerm}
+              ref={inputRef}
+            />
+            <i className="search icon"></i>
+          </div>
+        </div>
       </div>
       {props.contacts.map((contact, i) => (
         <div
@@ -44,13 +66,12 @@ const ContactList = (props) => {
               // onClick={() => deleteContactHandler(contact)}
               onClick={() => navigate("/edit", { state: { contact } })}
             ></i>
-          
-              <i
-                className="trash alternate outline icon"
-                style={{ color: "red", marginLeft: "10px", cursor: "pointer" }}
-                onClick={() => deleteContactHandler(contact)}
-              ></i>
 
+            <i
+              className="trash alternate outline icon"
+              style={{ color: "red", marginLeft: "10px", cursor: "pointer" }}
+              onClick={() => deleteContactHandler(contact)}
+            ></i>
           </div>
         </div>
       ))}

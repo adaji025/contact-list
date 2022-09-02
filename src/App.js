@@ -29,6 +29,8 @@ function App() {
   // });
 
   const [contacts, setcontacts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
     const getAllContacts = async () => {
@@ -72,8 +74,24 @@ function App() {
     setcontacts(newContactList);
   };
 
+  const searchHandler = (searchTerm) => {
+    setSearchTerm(searchTerm);
+    if (searchTerm !== "") {
+      const newContacts = contacts.filter((contact) => {
+      return  Object.values(contact)
+          .join(" ")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      });
+      setSearchResult(newContacts)
+      // console.log(newContacts);
+    }else {
+      setcontacts(contacts)
+    }
+  };
+
   const location = useLocation();
-  console.log(location);
+
   return (
     <div className="ui container">
       <Header />
@@ -82,8 +100,10 @@ function App() {
           path="/"
           element={
             <ContactList
-              contacts={contacts}
+              contacts={searchTerm.length < 1 ? contacts : searchResult}
               getContactId={removeContactHandler}
+              term={searchTerm}
+              searchHandler={searchHandler}
             />
           }
         />
