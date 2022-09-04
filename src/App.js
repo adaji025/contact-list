@@ -20,9 +20,8 @@ function App() {
   };
 
   // const [contacts, setcontacts] = useState(() => {
-  //   const retrievedContacts = JSON.parse(
-  //     localStorage.getItem(LOCAL_STORAGE_KEY)
-  //   );
+  //   const jsonvalue = localStorage.getItem(LOCAL_STORAGE_KEY);
+  //   const retrievedContacts = JSON.parse(jsonvalue);
   //   if (retrievedContacts) {
   //     return retrievedContacts;
   //   } else return [];
@@ -78,15 +77,15 @@ function App() {
     setSearchTerm(searchTerm);
     if (searchTerm !== "") {
       const newContacts = contacts.filter((contact) => {
-      return  Object.values(contact)
+        return Object.values(contact)
           .join(" ")
           .toLowerCase()
           .includes(searchTerm.toLowerCase());
       });
-      setSearchResult(newContacts)
+      setSearchResult(newContacts);
       // console.log(newContacts);
-    }else {
-      setcontacts(contacts)
+    } else {
+      setcontacts(contacts);
     }
   };
 
